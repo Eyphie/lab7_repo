@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}menu{% endblock %}
+{% block content %}
+    <div class="pp menu">
+        {% for category in menu %}
+            <div class="col-lg-5">
+                    <div class="panel panel-default">
+                         <div class="panel-body bg-info">
+                    <style>
+                        .s1 {
+                            text-align: center;
+                            font-weight: 700;
+                        }
+                    </style>
+                             <h4> <p class="s1">{{ category.name }}</p></h4>
+                             <div class="caption">
+                                 <p><div style="text-align: center;">{{ category.description }}</div></p>
+                                 <div class="s1">
+                                     {% if category.name == 'New recipies' %}
+                                         <a href="/show_new" class="btn btn-primary" role="button">{% include 'show_q.html' with field=category.name %}</a>
+                                     {% elif category.name == 'All recipies' %}
+                                         <a href="/show_all" class="btn btn-primary" role="button">{% include 'show_q.html' with field=category.name %}</a>
+                                     {% elif category.name == 'Cake and sweet' %}
+                                         <a href="/show_sweet" class="btn btn-primary" role="button">{% include 'show_q.html' with field=category.name %}</a>
+                                     {% endif %}
+                                 </div>
+                             </div>
+                         </div>
+                    </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

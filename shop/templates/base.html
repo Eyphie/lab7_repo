@@ -1,0 +1,48 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css">
+    <link href="/static/css/jumbotron-narrow.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Calligraffitti" rel="stylesheet">
+    <style>
+    body {
+        background: url(/static/3.jpg)  no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+   }
+        h3 {
+            font-family: 'Calligraffitti';
+            font-size: xx-large;
+        }
+  </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <style>
+            .link1 {
+                font-size: 50px;
+                color: darkblue;
+            }
+        </style>
+        <div class="text-center">
+            <h3><a href="/" class="link1"> Enjoy with cooking </a></h3>
+        </div>
+        {% if user.username != '' %}
+            <div class="col-md-offset-9">
+                <p class="user">You are signed in as {{ user.username }}</p>
+                <a href="/logout" class="btn btn-primary" role="button">Logout</a>
+                <br>
+                <br>
+            </div>
+        {% endif %}
+    </div>
+{% block content %}{% endblock %}
+
+</body>
+</html>
